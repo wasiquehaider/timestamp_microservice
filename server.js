@@ -27,9 +27,24 @@ app.get("/api/hello", function (req, res) {
 });
 //GET request to format natural and UNIX date
 app.get('/naturaldate/:dateVal',(req,res,next)=> {
+  
+  //Gets the request Data from URL
   var dateVal = req.params.dateVal
-  var dateForamt
-  res.json({unix: dateVal})
+  
+  //Formatting Date
+  var dateFormat = {
+  day: 'numeric',
+  month: 'numeric',
+  year: 'long'
+  }
+  
+  if(isNaN(dateVal)){
+  var naturalDate = new Date(dateVal)
+  naturalDate = naturalDate.toLocaleString("en-us", dateFormat)
+    var unixDate = new Date(dateVal).getTime()/1000
+  
+  }
+  res.json({unix: unixDate, natural: naturalDate})
 })
 
 
