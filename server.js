@@ -25,8 +25,12 @@ app.get("/", function (req, res) {
 app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
-
-app.get('/naturaldate',)
+//GET request to format natural and UNIX date
+app.get('/naturaldate/:dateVal',(req,res,next)=> {
+  var dateVal = req.params.dateVal
+  var dateForamt
+  res.json({unix: dateVal})
+})
 
 
 // listen for requests :)
